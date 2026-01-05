@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pregunta importante</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #FAD7A0, #F5B7B1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Arial", sans-serif;
+        color: #5D4037;
+        text-align: center;
+    }
+
+    .card {
+        background: rgba(255, 248, 240, 0.92);
+        padding: 32px;
+        border-radius: 22px;
+        width: 90%;
+        max-width: 520px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1.1em;
+        margin-bottom: 22px;
+        line-height: 1.5;
+    }
+
+    button {
+        background: #E59866;
+        color: #4E342E;
+        border: none;
+        padding: 13px 24px;
+        margin: 8px;
+        border-radius: 30px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        background: #EB984E;
+    }
+
+    .pantalla {
+        display: none;
+    }
+
+    .pantalla.activa {
+        display: block;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div id="inicio" class="pantalla activa">
+        <h1>Buenas, Angie 👋</h1>
+        <p>Quisiera hacerte una pregunta</p>
+        <button onclick="mostrar('si')">Está bien</button>
+        <button onclick="mostrar('no')">No, no quiero</button>
+    </div>
+
+    <div id="si" class="pantalla">
+        <p>Bueno, es algo breve pero puedes tomar tu tiempo y pensarlo.</p>
+        <button onclick="mostrar('pregunta')">Dale, pregunta</button>
+    </div>
+
+    <div id="no" class="pantalla">
+        <p>Bueno, de todos modos te lo voy a preguntar jajajaj 😅</p>
+        <button onclick="mostrar('pregunta')">Dale, pregunta</button>
+    </div>
+
+    <div id="pregunta" class="pantalla">
+        <h1>✨ La pregunta ✨</h1>
+        <p>
+            ¿Separarías una cita conmigo el día
+            <strong>viernes 9</strong> o
+            <strong>sábado 10</strong>?<br><br>
+            Es un <strong>date elegante</strong>.<br>
+            Quiero conversar contigo de varias cosas.<br><br>
+            Espero se dé 💫
+        </p>
+        <button onclick="mostrar('respuestaFinal')">Responder</button>
+    </div>
+
+    <div id="respuestaFinal" class="pantalla">
+        <h1>💬 Tu respuesta</h1>
+        <button onclick="whatsappSi()">Sí, no le veo problema</button>
+        <button onclick="whatsappNo()">No, déjame pensarlo, no podría darte una respuesta ahora</button>
+    </div>
+
+</div>
+
+<script>
+    function mostrar(id) {
+        document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
+        document.getElementById(id).classList.add('activa');
+    }
+
+    function whatsappSi() {
+        const texto = encodeURIComponent("Sí, no le veo problema 😊");
+        window.location.href = "https://wa.me/51973781181?text=" + texto;
+    }
+
+    function whatsappNo() {
+        const texto = encodeURIComponent("No, déjame pensarlo, no podría darte una respuesta ahora 🙏");
+        window.location.href = "https://wa.me/51973781181?text=" + texto;
+    }
+</script>
+
+</body>
+</html>
